@@ -35,9 +35,8 @@ public class AI extends Player {
     	
     	
     	
-    	return " ";
     	
-    	/*
+    	
     	int findNothing = (int)(Math.random()*10);
 
     	if (findNothing <=2) {
@@ -68,7 +67,7 @@ public class AI extends Player {
     		
     	return " ";
     	
-    	*/
+    	
     }
 
     /*
@@ -89,9 +88,8 @@ public class AI extends Player {
     	 */
     	
     	
-    	return false; 
     	
-    	/*
+    	
     	
     	
     	int decision = (int) (Math.random()* 10);
@@ -102,7 +100,7 @@ public class AI extends Player {
     	else {
     		return false;
     	}
-    	*/
+    	
     	
     }
     

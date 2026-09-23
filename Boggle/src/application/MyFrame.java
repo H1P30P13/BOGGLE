@@ -58,8 +58,8 @@ public class MyFrame extends JFrame implements ActionListener {
 	
 	//Icons
 	private ImageIcon boggleIcon;
-	ImageIcon woodTexture = new ImageIcon("src/application/WoodTexture.png");
-	ImageIcon bigBoggleIcon = new ImageIcon("src/application/DiceIcons.png");
+	ImageIcon woodTexture = new ImageIcon(getClass().getResource("/application/woodtexture.png"));
+	ImageIcon bigBoggleIcon = new ImageIcon(getClass().getResource("/application/DiceIcons.png"));
 
 	//Player objects
 	static Player player1;
@@ -581,7 +581,7 @@ public class MyFrame extends JFrame implements ActionListener {
 			Object[] difficultyOptions = { "Easy", "Medium", "Hard" };
 
 			int temp1 = JOptionPane.showOptionDialog(null, "Choose an difficulty", "Options",
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, difficultyOptions, null);
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, UIManager.getIcon("JOptionPane.questionIcon"), difficultyOptions, null);
 			if (temp1 == 0) {
 				difficulty = 1;
 			} else if (temp1 == 1) {
@@ -755,23 +755,24 @@ public class MyFrame extends JFrame implements ActionListener {
 						remainingTimeTimer.start();
 						updateWordsList(chosenWord);
 						scrambleCounter = 0;
+						
+						if (player2 instanceof AI) {
 
+							submitButton.setEnabled(false);
+							submitButton.setText("AI Thinking");
+
+							timer.stop();
+							timer.start();
+							remainingTimeTimer.stop(); 
+							remainingTimeTimer.start();
+
+							AITimer.start();
+
+						}
 					}
 					player1Points = 0;
 
-					if (player2 instanceof AI) {
-
-						submitButton.setEnabled(false);
-						submitButton.setText("AI Thinking");
-
-						timer.stop();
-						timer.start();
-						remainingTimeTimer.stop(); 
-						remainingTimeTimer.start();
-
-						AITimer.start();
-
-					}
+					
 				}
 
 				else {
